@@ -18,7 +18,7 @@
     --steel:   #505050;
     --silver:  #8a8a8a;
     --fog:     #c0c0c0;
-    --mist:    #e2e2e2;
+    --mist:    #322828fc;
     --pure:    #ffffff;
     --serif:   'Cormorant Garamond', Georgia, serif;
     --sans:    'DM Sans', sans-serif;
@@ -139,6 +139,98 @@
   .hero-content {
     position: relative;
     animation: rise 1.2s var(--ease) both;
+  }
+
+  .hero-profile {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+
+  .hero-photo {
+    width: 158px;
+    height: 158px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid rgba(255,255,255,0.16);
+    box-shadow: 0 28px 70px rgba(0,0,0,0.3);
+    background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+  }
+
+  .hero-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hero-name span,
+  .hero-name em {
+    display: inline-block;
+    min-width: 0;
+  }
+
+  .hero-name .typing {
+    border-right: 0.15em solid var(--pure);
+    animation: blink 0.75s step-end infinite;
+  }
+
+  .hero-bg {
+    animation: glow 20s ease-in-out infinite;
+  }
+
+  .hero-grid-lines {
+    animation: drift 30s linear infinite;
+  }
+
+  .hero-photo {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .fade-up,
+  .hero-eyebrow,
+  .hero-name,
+  .hero-tagline,
+  .hero-actions,
+  .hero-scroll-hint,
+  section,
+  footer {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+  }
+
+  .visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .hero-scroll-hint {
+    animation: pulse-bar 2.2s ease-in-out infinite, float 3.5s ease-in-out infinite;
+  }
+
+  .btn {
+    transform: translateZ(0);
+    will-change: transform, background;
+  }
+
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+
+  @keyframes glow {
+    0%,100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.02); opacity: 0.95; }
+  }
+
+  @keyframes drift {
+    from { background-position: 0 0, 0 0; }
+    to { background-position: 400px 400px, -400px -400px; }
+  }
+
+  @keyframes float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
   }
 
   @keyframes rise {
@@ -734,12 +826,20 @@
   <div class="hero-bg"></div>
   <div class="hero-grid-lines"></div>
   <div class="hero-content">
+    <div class="hero-profile">
+      <div class="hero-photo">
+        <img src="profile.jpg" alt="Harjas Singh">
+      </div>
+    </div>
     <div class="hero-eyebrow">
       <span></span>
-      B.Tech CSE &middot; AI &amp; ML &middot; 2024&ndash;2028
+      B.Tech CSE &middot; AI &amp; ML &middot; 2025&ndash;2029
       <span></span>
     </div>
-    <h1 class="hero-name">Harjas<br><em>Singh</em></h1>
+    <h1 class="hero-name">
+      <span id="heroTitleFirst"></span><br>
+      <em id="heroTitleLast"></em>
+    </h1>
     <p class="hero-tagline">
       First-year Computer Science Engineering student with a deep passion for
       Artificial Intelligence, Machine Learning, and building intelligent systems
@@ -786,7 +886,7 @@
         </div>
         <div class="info-card">
           <div class="info-card-label">Year</div>
-          <div class="info-card-value">First Year &middot; 2024&ndash;2028</div>
+          <div class="info-card-value">First Year · 2025–2029</div>
         </div>
         <div class="info-card">
           <div class="info-card-label">Interests</div>
@@ -836,6 +936,20 @@
       </div>
 
       <div class="skill-card">
+        <div class="skill-icon">&#x1F5A5;&#xFE0F;</div>
+        <div class="skill-name">Basic Digital Logic</div>
+        <p class="skill-desc">Understanding gates, circuits, and boolean algebra to build strong foundations for hardware-aware computing.</p>
+        <div class="skill-track"><div class="skill-fill" style="width:50%"></div></div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">&#x1F3B5;</div>
+        <div class="skill-name">Music Production</div>
+        <p class="skill-desc">Exploring sound design, composition, and audio workflows to blend technical skill with creative expression.</p>
+        <div class="skill-track"><div class="skill-fill" style="width:45%"></div></div>
+      </div>
+
+      <div class="skill-card">
         <div class="skill-icon">&#x1F4BB;</div>
         <div class="skill-name">Programming</div>
         <p class="skill-desc">C, C++, and Python &mdash; strong fundamentals in logic, syntax, and writing clean, structured code.</p>
@@ -862,7 +976,7 @@
       <div class="tl-item">
         <div class="tl-dot"></div>
         <div class="tl-meta">
-          <span class="tl-year">2024</span>
+          <span class="tl-year">2025</span>
           <span class="tl-badge">Academic</span>
         </div>
         <h3 class="tl-title">Commenced B.Tech CSE (AI &amp; ML)</h3>
@@ -872,7 +986,7 @@
       <div class="tl-item">
         <div class="tl-dot"></div>
         <div class="tl-meta">
-          <span class="tl-year">2024</span>
+          <span class="tl-year">2026</span>
           <span class="tl-badge">Event</span>
         </div>
         <h3 class="tl-title">Participated in Technical Symposium</h3>
@@ -882,7 +996,7 @@
       <div class="tl-item">
         <div class="tl-dot"></div>
         <div class="tl-meta">
-          <span class="tl-year">2024</span>
+          <span class="tl-year">2025</span>
           <span class="tl-badge">Project</span>
         </div>
         <h3 class="tl-title">Academic Project &mdash; Foundational AI Concepts</h3>
@@ -903,10 +1017,10 @@
         <div class="tl-dot"></div>
         <div class="tl-meta">
           <span class="tl-year">2025</span>
-          <span class="tl-badge">Hackathon</span>
+          <span class="tl-badge">Academic</span>
         </div>
-        <h3 class="tl-title">Hackathon Participation</h3>
-        <p class="tl-desc">Joined a team-based hackathon challenge, collaborating on ideating and prototyping a technology solution within a constrained timeframe &mdash; honing skills in rapid development and teamwork.</p>
+        <h3 class="tl-title">Self-Directed Tech Study</h3>
+        <p class="tl-desc">Dedicated time to deepen understanding of AI, algorithms, and system design through self-driven study, practice, and project-based learning.</p>
       </div>
 
     </div>
@@ -981,6 +1095,74 @@
   <span class="footer-copy">&copy; 2026 Harjas Singh. All rights reserved.</span>
   <span class="footer-brand">Harjas Singh</span>
 </footer>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const titleParts = [
+      { element: document.getElementById('heroTitleFirst'), text: 'Harjas' },
+      { element: document.getElementById('heroTitleLast'), text: 'Singh' }
+    ];
 
+    let partIndex = 0;
+    let charIndex = 0;
+
+    function typeNextChar() {
+      const part = titleParts[partIndex];
+      if (!part) return;
+
+      part.element.classList.add('typing');
+      const previous = titleParts[partIndex - 1];
+      if (previous) previous.element.classList.remove('typing');
+
+      part.element.textContent += part.text.charAt(charIndex);
+      charIndex += 1;
+
+      if (charIndex < part.text.length) {
+        setTimeout(typeNextChar, 90);
+      } else {
+        part.element.classList.remove('typing');
+        partIndex += 1;
+        charIndex = 0;
+        if (titleParts[partIndex]) {
+          setTimeout(typeNextChar, 180);
+        }
+      }
+    }
+
+    typeNextChar();
+
+    document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+      link.addEventListener('click', function(event) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          event.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    const revealTargets = document.querySelectorAll('section, footer, .hero-eyebrow, .hero-name, .hero-tagline, .hero-actions, .hero-scroll-hint');
+    const revealObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    revealTargets.forEach(function(target, index) {
+      if (target.classList.contains('hero-name')) {
+        target.style.transitionDelay = '0.3s';
+      }
+      if (target.classList.contains('hero-tagline')) {
+        target.style.transitionDelay = '0.4s';
+      }
+      if (target.classList.contains('hero-actions')) {
+        target.style.transitionDelay = '0.5s';
+      }
+      revealObserver.observe(target);
+    });
+  });
+</script>
 </body>
 </html>
